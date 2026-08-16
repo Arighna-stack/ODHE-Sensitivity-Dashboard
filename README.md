@@ -55,10 +55,20 @@ out of sync.
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate      # Windows; use `source .venv/bin/activate` on macOS/Linux
+source .venv/bin/activate   # macOS/Linux
 pip install -r requirements.txt
 streamlit run ODHE_Dashboard.py
 ```
+
+On Windows, activate with `.venv\Scripts\Activate.ps1` in PowerShell (or
+`.venv\Scripts\activate.bat` in cmd.exe). If PowerShell blocks the script with
+an execution-policy error, run
+`Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first, then retry.
+
+If `streamlit` isn't found after installing (its Scripts folder isn't on
+PATH), run it via `python -m streamlit run ODHE_Dashboard.py` instead — this
+is exactly what a venv avoids, since the venv's own Scripts folder is
+automatically prioritized once activated.
 
 The app opens at `http://localhost:8501`.
 
